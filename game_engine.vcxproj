@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>17.0</VCProjectVersion>
+    <Keyword>Win32Proj</Keyword>
+    <ProjectGuid>{605dd1a4-cd34-4e7c-83bb-ae79069679ff}</ProjectGuid>
+    <RootNamespace>gameengine</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v143</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <CustomBuildAfterTargets>
+    </CustomBuildAfterTargets>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalOptions>/wd4996
+ %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <BasicRuntimeChecks>Default</BasicRuntimeChecks>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)lib\SDL2\SDL2.lib;$(ProjectDir)lib\SDL2\SDL2main.lib;$(ProjectDir)lib\SDL_image\SDL2_image.lib;$(ProjectDir)lib\SDL_mixer\SDL2_mixer.lib;$(ProjectDir)lib\SDL_ttf\SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2;$(ProjectDir)lib\SDL_image;$(ProjectDir)lib\SDL_ttf;$(ProjectDir)lib\SDL_mixer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>xcopy /Y $(ProjectDir)lib\SDL2\SDL2.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_image\SDL2_image.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_ttf\SDL2_ttf.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>SDL2.dll;SDL2_image.dll;SDL2_mixer.dll;SDL2_ttf.dll</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level4</WarningLevel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <AdditionalOptions>/wd4996
+ %(AdditionalOptions)</AdditionalOptions>
+      <FloatingPointModel>Precise</FloatingPointModel>
+    </ClCompile>
+    <Link>
+      <SubSystem>Console</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>$(ProjectDir)lib\SDL2\SDL2.lib;$(ProjectDir)lib\SDL2\SDL2main.lib;$(ProjectDir)lib\SDL_image\SDL2_image.lib;$(ProjectDir)lib\SDL_mixer\SDL2_mixer.lib;$(ProjectDir)lib\SDL_ttf\SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2;$(ProjectDir)lib\SDL_image;$(ProjectDir)lib\SDL_ttf;$(ProjectDir)lib\SDL_mixer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>xcopy /Y $(ProjectDir)lib\SDL2\SDL2.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_image\SDL2_image.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_ttf\SDL2_ttf.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
+    </CustomBuildStep>
+    <CustomBuildStep>
+      <Outputs>SDL2.dll;SDL2_image.dll;SDL2_mixer.dll;SDL2_ttf.dll</Outputs>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="headers\EventSystem.h" />
+    <ClInclude Include="headers\Collision.h" />
+    <ClInclude Include="headers\ContactListener.h" />
+    <ClInclude Include="headers\Component.h" />
+    <ClInclude Include="headers\ComponentDB.h" />
+    <ClInclude Include="headers\AudioDB.h" />
+    <ClInclude Include="headers\Engine.h" />
+    <ClInclude Include="headers\Actor.h" />
+    <ClInclude Include="headers\Game_initialize.h" />
+    <ClInclude Include="headers\Game_Test.h" />
+    <ClInclude Include="headers\Game_messages.h" />
+    <ClInclude Include="headers\Resources_check.h" />
+    <ClInclude Include="headers\SceneDB.h" />
+    <ClInclude Include="headers\TemplateDB.h" />
+    <ClInclude Include="headers\Renderer.h" />
+    <ClInclude Include="headers\ImageDB.h" />
+    <ClInclude Include="headers\TextDB.h" />
+    <ClInclude Include="headers\Input.h" />
+    <ClInclude Include="headers\Rigidbody.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_api.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_block_allocator.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_body.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_broad_phase.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_chain_shape.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_circle_shape.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_collision.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_common.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_contact.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_contact_manager.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_distance.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_distance_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_draw.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_dynamic_tree.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_edge_shape.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_fixture.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_friction_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_gear_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_growable_stack.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_math.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_motor_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_mouse_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_polygon_shape.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_prismatic_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_pulley_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_revolute_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_rope.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_settings.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_shape.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_stack_allocator.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_timer.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_time_of_impact.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_time_step.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_types.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_weld_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_wheel_joint.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_world.h" />
+    <ClInclude Include="Include\box2d\include\box2d\b2_world_callbacks.h" />
+    <ClInclude Include="Include\box2d\include\box2d\box2d.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_chain_circle_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_chain_polygon_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_circle_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_contact_solver.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_edge_circle_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_edge_polygon_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_island.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_polygon_circle_contact.h" />
+    <ClInclude Include="Include\box2d\src\dynamics\b2_polygon_contact.h" />
+    <ClInclude Include="headers\PhysicsWorld.h" />
+    <ClInclude Include="headers\RayCastCallback.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\EventSystem.cpp" />
+    <ClCompile Include="source\RayCastCallback.cpp" />
+    <ClCompile Include="source\ContactListener.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_broad_phase.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_chain_shape.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_circle_shape.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_collide_circle.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_collide_edge.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_collide_polygon.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_collision.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_distance.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_dynamic_tree.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_edge_shape.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_polygon_shape.cpp" />
+    <ClCompile Include="Include\box2d\src\collision\b2_time_of_impact.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_block_allocator.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_draw.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_math.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_settings.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_stack_allocator.cpp" />
+    <ClCompile Include="Include\box2d\src\common\b2_timer.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_body.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_chain_circle_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_chain_polygon_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_circle_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_contact_manager.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_contact_solver.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_distance_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_edge_circle_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_edge_polygon_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_fixture.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_friction_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_gear_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_island.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_motor_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_mouse_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_polygon_circle_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_polygon_contact.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_prismatic_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_pulley_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_revolute_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_weld_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_wheel_joint.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_world.cpp" />
+    <ClCompile Include="Include\box2d\src\dynamics\b2_world_callbacks.cpp" />
+    <ClCompile Include="Include\box2d\src\rope\b2_rope.cpp" />
+    <ClCompile Include="source\PhysicsWorld.cpp" />
+    <ClCompile Include="source\Component.cpp" />
+    <ClCompile Include="source\Rigidbody.cpp" />
+    <ClCompile Include="source\ComponentDB.cpp" />
+    <ClCompile Include="Include\lua\lapi.c" />
+    <ClCompile Include="Include\lua\lauxlib.c" />
+    <ClCompile Include="Include\lua\lbaselib.c" />
+    <ClCompile Include="Include\lua\lcode.c" />
+    <ClCompile Include="Include\lua\lcorolib.c" />
+    <ClCompile Include="Include\lua\lctype.c" />
+    <ClCompile Include="Include\lua\ldblib.c" />
+    <ClCompile Include="Include\lua\ldebug.c" />
+    <ClCompile Include="Include\lua\ldo.c" />
+    <ClCompile Include="Include\lua\ldump.c" />
+    <ClCompile Include="Include\lua\lfunc.c" />
+    <ClCompile Include="Include\lua\lgc.c" />
+    <ClCompile Include="Include\lua\linit.c" />
+    <ClCompile Include="Include\lua\liolib.c" />
+    <ClCompile Include="Include\lua\llex.c" />
+    <ClCompile Include="Include\lua\lmathlib.c" />
+    <ClCompile Include="Include\lua\lmem.c" />
+    <ClCompile Include="Include\lua\loadlib.c" />
+    <ClCompile Include="Include\lua\lobject.c" />
+    <ClCompile Include="Include\lua\lopcodes.c" />
+    <ClCompile Include="Include\lua\loslib.c" />
+    <ClCompile Include="Include\lua\lparser.c" />
+    <ClCompile Include="Include\lua\lstate.c" />
+    <ClCompile Include="Include\lua\lstring.c" />
+    <ClCompile Include="Include\lua\lstrlib.c" />
+    <ClCompile Include="Include\lua\ltable.c" />
+    <ClCompile Include="Include\lua\ltablib.c" />
+    <ClCompile Include="Include\lua\ltm.c" />
+    <ClCompile Include="Include\lua\lundump.c" />
+    <ClCompile Include="Include\lua\lutf8lib.c" />
+    <ClCompile Include="Include\lua\lvm.c" />
+    <ClCompile Include="Include\lua\lzio.c" />
+    <ClCompile Include="source\Input.cpp" />
+    <ClCompile Include="source\AudioDB.cpp" />
+    <ClCompile Include="source\ImageDB.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="source\Renderer.cpp" />
+    <ClCompile Include="source\Actor.cpp" />
+    <ClCompile Include="source\Engine.cpp" />
+    <ClCompile Include="source\Game_initialize.cpp" />
+    <ClCompile Include="source\Game_messages.cpp" />
+    <ClCompile Include="source\Game_Test.cpp" />
+    <ClCompile Include="source\Resources_check.cpp" />
+    <ClCompile Include="source\SceneDB.cpp" />
+    <ClCompile Include="source\TemplateDB.cpp" />
+    <ClCompile Include="source\TextDB.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include=".gitignore" />
+    <None Include="makefile" />
+    <None Include="resources\actor_templates\friend.template" />
+    <None Include="resources\actor_templates\wolverine.template" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="credit.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets" />
+</Project>
