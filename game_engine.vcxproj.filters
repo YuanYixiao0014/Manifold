@@ -13,6 +13,102 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="AndroidPackaging">
+      <UniqueIdentifier>{eca63070-3b74-497b-b636-23bba28bb3e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\gradle">
+      <UniqueIdentifier>{a9858984-44a3-45f2-a864-a62f0000b7be}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\gradle\wrapper">
+      <UniqueIdentifier>{7e1753bf-f2f5-4191-aa31-5fffd796db7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app">
+      <UniqueIdentifier>{b347854a-6277-43c0-b2e1-b86ec044e870}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src">
+      <UniqueIdentifier>{21e2535d-2d62-4ea9-ae4e-420c51e14a11}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\androidTest">
+      <UniqueIdentifier>{426a43bc-866d-4f4f-bedd-16a9301a9cf0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\androidTest\java">
+      <UniqueIdentifier>{59aa5ec4-67ba-40ab-8d66-7ce69137013f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\androidTest\java\com">
+      <UniqueIdentifier>{355f56e8-bfba-47f8-b37e-1907413269bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\androidTest\java\com\example">
+      <UniqueIdentifier>{dc7ee13e-9495-4dc1-9197-55259fa81771}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\androidTest\java\com\example\gameengineYY2D">
+      <UniqueIdentifier>{7e933d66-d87d-4128-b341-1b6c6764b09f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main">
+      <UniqueIdentifier>{564c414b-c623-4d5e-bff5-21f910970c1f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\cpp">
+      <UniqueIdentifier>{1ca79bb3-1224-42d2-a113-c0668cee6315}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\java">
+      <UniqueIdentifier>{5baa29d1-6bdf-48dc-8f52-3e82816b3c6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\java\com">
+      <UniqueIdentifier>{d47e9022-9eea-4470-abe3-8eb283e64e85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\java\com\example">
+      <UniqueIdentifier>{fd2fd559-88b8-472b-8eed-eb5cb0ae87b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\java\com\example\gameengineYY2D">
+      <UniqueIdentifier>{eae1850d-429c-41e5-8600-d455e6059eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res">
+      <UniqueIdentifier>{e6a1dd6a-6bec-4c2d-a4d1-b0e434e395ce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\drawable">
+      <UniqueIdentifier>{69b2d933-80c3-4c67-811a-3abd98f24d2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\drawable-v24">
+      <UniqueIdentifier>{d027fab2-a6b5-4187-ba28-1f1c20fbfb86}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\layout">
+      <UniqueIdentifier>{ed57dc54-7922-4992-8a56-80ef4d02893e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-anydpi-v26">
+      <UniqueIdentifier>{0b69da19-99b4-4f50-84d5-7553ea36d866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-hdpi">
+      <UniqueIdentifier>{f0a32e8f-0a99-4c7b-a885-54b5f7593818}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-mdpi">
+      <UniqueIdentifier>{4529b857-7e3d-4593-9166-4a9824e56415}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-xhdpi">
+      <UniqueIdentifier>{9ab59dce-aac2-48da-a90d-fca980840501}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-xxhdpi">
+      <UniqueIdentifier>{a8cb5857-1a91-45ac-935b-6e4a44db200d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\mipmap-xxxhdpi">
+      <UniqueIdentifier>{e52cac2e-79d7-4035-aca7-15c70845bd28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\main\res\values">
+      <UniqueIdentifier>{ba464a30-648d-4412-980e-049555e8db42}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\test">
+      <UniqueIdentifier>{33df7aa4-5bbf-47ce-ba0c-b055300a35b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\test\java">
+      <UniqueIdentifier>{b5c3be42-e99d-4614-a6e4-accedc6d3a78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\test\java\com">
+      <UniqueIdentifier>{c348e805-4c92-47bd-95c7-1123877d1442}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\test\java\com\example">
+      <UniqueIdentifier>{f04891ae-30fc-4682-8edd-6b82b10754b9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AndroidPackaging\app\src\test\java\com\example\gameengineYY2D">
+      <UniqueIdentifier>{812e6567-0b67-450c-8d4a-d83b71db9e79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="headers\Game_messages.h">
@@ -521,12 +617,108 @@
     <ClCompile Include="source\EventSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="AndroidPackaging\app\src\main\cpp\JniBindings.cpp">
+      <Filter>AndroidPackaging\app\src\main\cpp</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
     <None Include="makefile" />
     <None Include="resources\actor_templates\wolverine.template" />
     <None Include="resources\actor_templates\friend.template" />
+    <None Include="AndroidPackaging\gradle\wrapper\gradle-wrapper.jar">
+      <Filter>AndroidPackaging\gradle\wrapper</Filter>
+    </None>
+    <None Include="AndroidPackaging\gradle\wrapper\gradle-wrapper.properties">
+      <Filter>AndroidPackaging\gradle\wrapper</Filter>
+    </None>
+    <None Include="AndroidPackaging\build.gradle">
+      <Filter>AndroidPackaging</Filter>
+    </None>
+    <None Include="AndroidPackaging\gradle.properties">
+      <Filter>AndroidPackaging</Filter>
+    </None>
+    <None Include="AndroidPackaging\gradlew">
+      <Filter>AndroidPackaging</Filter>
+    </None>
+    <None Include="AndroidPackaging\gradlew.bat">
+      <Filter>AndroidPackaging</Filter>
+    </None>
+    <None Include="AndroidPackaging\settings.gradle">
+      <Filter>AndroidPackaging</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\androidTest\java\com\example\gameengineYY2D\ExampleInstrumentedTest.java">
+      <Filter>AndroidPackaging\app\src\androidTest\java\com\example\gameengineYY2D</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\java\com\example\gameengineYY2D\MainActivity.java">
+      <Filter>AndroidPackaging\app\src\main\java\com\example\gameengineYY2D</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\drawable\ic_launcher_background.xml">
+      <Filter>AndroidPackaging\app\src\main\res\drawable</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\drawable-v24\ic_launcher_foreground.xml">
+      <Filter>AndroidPackaging\app\src\main\res\drawable-v24</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\layout\activity_main.xml">
+      <Filter>AndroidPackaging\app\src\main\res\layout</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-anydpi-v26</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-anydpi-v26</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-hdpi\ic_launcher.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-hdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-hdpi\ic_launcher_round.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-hdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-mdpi\ic_launcher.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-mdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-mdpi\ic_launcher_round.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-mdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xhdpi\ic_launcher.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xhdpi\ic_launcher_round.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxhdpi\ic_launcher.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xxhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxhdpi\ic_launcher_round.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xxhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xxxhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png">
+      <Filter>AndroidPackaging\app\src\main\res\mipmap-xxxhdpi</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\values\colors.xml">
+      <Filter>AndroidPackaging\app\src\main\res\values</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\values\strings.xml">
+      <Filter>AndroidPackaging\app\src\main\res\values</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\res\values\styles.xml">
+      <Filter>AndroidPackaging\app\src\main\res\values</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\main\AndroidManifest.xml">
+      <Filter>AndroidPackaging\app\src\main</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\src\test\java\com\example\gameengineYY2D\ExampleUnitTest.java">
+      <Filter>AndroidPackaging\app\src\test\java\com\example\gameengineYY2D</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\build.gradle">
+      <Filter>AndroidPackaging\app</Filter>
+    </None>
+    <None Include="AndroidPackaging\app\proguard-rules.pro">
+      <Filter>AndroidPackaging\app</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="credit.txt" />

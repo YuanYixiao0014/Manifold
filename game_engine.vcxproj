@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Android-arm64-v8a">
+      <Configuration>Debug</Configuration>
+      <Platform>Android-arm64-v8a</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Android-x86_64">
+      <Configuration>Debug</Configuration>
+      <Platform>Android-x86_64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android-arm64-v8a">
+      <Configuration>Release</Configuration>
+      <Platform>Android-arm64-v8a</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Android-x86_64">
+      <Configuration>Release</Configuration>
+      <Platform>Android-x86_64</Platform>
     </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
@@ -52,6 +68,30 @@
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Android-arm64-v8a'">
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Android-arm64-v8a'">
+    <PlatformToolset>Clang</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|Android-x86_64'">
+    <PlatformToolset>Clang</PlatformToolset>
+    <CLanguageStandard>c17</CLanguageStandard>
+    <CppLanguageStandard>cpp17</CppLanguageStandard>
+    <AndroidMinSdkVersion>15</AndroidMinSdkVersion>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfStl>cpp_static</UseOfStl>
+    <NativeBuildBackend>MultiToolTaskMSBuild</NativeBuildBackend>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|Android-x86_64'">
+    <PlatformToolset>Clang</PlatformToolset>
+    <CLanguageStandard>c17</CLanguageStandard>
+    <CppLanguageStandard>cpp17</CppLanguageStandard>
+    <AndroidMinSdkVersion>15</AndroidMinSdkVersion>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseOfStl>cpp_static</UseOfStl>
+    <NativeBuildBackend>MultiToolTaskMSBuild</NativeBuildBackend>
+  </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
   </ImportGroup>
@@ -77,6 +117,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <CustomBuildAfterTargets>
     </CustomBuildAfterTargets>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android-x86_64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <AndroidEnablePackaging>true</AndroidEnablePackaging>
+    <AndroidGradleBuildOutputDir>
+    </AndroidGradleBuildOutputDir>
+    <AndroidApplicationModule>app</AndroidApplicationModule>
+    <AndroidApkName>$(RootNamespace)-$(Configuration).apk</AndroidApkName>
+    <AndroidGradleBuildDir>$(MSBuildProjectDirectory)\AndroidPackaging\</AndroidGradleBuildDir>
+    <AndroidGradlePackageOutputName>$(RootNamespace)-$(Configuration).apk</AndroidGradlePackageOutputName>
+    <OutDir>$(SolutionDir)$(Platform)\</OutDir>
+    <AndroidGradleBuildType>$(Configuration)</AndroidGradleBuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android-x86_64'">
+    <IncludePath>$(IncludePath)</IncludePath>
+    <AndroidEnablePackaging>true</AndroidEnablePackaging>
+    <AndroidGradleBuildOutputDir>
+    </AndroidGradleBuildOutputDir>
+    <AndroidApplicationModule>app</AndroidApplicationModule>
+    <AndroidApkName>$(RootNamespace)-$(Configuration).apk</AndroidApkName>
+    <AndroidGradleBuildDir>$(MSBuildProjectDirectory)\AndroidPackaging\</AndroidGradleBuildDir>
+    <AndroidGradlePackageOutputName>$(RootNamespace)-$(Configuration).apk</AndroidGradlePackageOutputName>
+    <OutDir>$(SolutionDir)$(Platform)\</OutDir>
+    <AndroidGradleBuildType>$(Configuration)</AndroidGradleBuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android-arm64-v8a'">
+    <AndroidEnablePackaging>true</AndroidEnablePackaging>
+    <AndroidGradleBuildDir>$(MSBuildProjectDirectory)\AndroidPackaging\</AndroidGradleBuildDir>
+    <AndroidApplicationModule>app</AndroidApplicationModule>
+    <AndroidGradleBuildType>$(Configuration)</AndroidGradleBuildType>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android-arm64-v8a'">
+    <AndroidEnablePackaging>true</AndroidEnablePackaging>
+    <AndroidGradleBuildDir>$(MSBuildProjectDirectory)\AndroidPackaging\</AndroidGradleBuildDir>
+    <AndroidApplicationModule>app</AndroidApplicationModule>
+    <AndroidGradleBuildType>$(Configuration)</AndroidGradleBuildType>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -168,6 +244,40 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
       <Outputs>SDL2.dll;SDL2_image.dll;SDL2_mixer.dll;SDL2_ttf.dll</Outputs>
     </CustomBuildStep>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android-x86_64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CLanguageStandard>c17</CLanguageStandard>
+      <CppLanguageStandard>cpp17</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(ProjectDir)lib\SDL2\SDL2.lib;$(ProjectDir)lib\SDL2\SDL2main.lib;$(ProjectDir)lib\SDL_image\SDL_image.lib;$(ProjectDir)lib\SDL_ttf\SDL_tff.lib;$(ProjectDir)lib\SDL_mixer\SDL_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2;$(ProjectDir)lib\SDL_image;$(ProjectDir)lib\SDL_ttf;$(ProjectDir)lib\SDL_mixer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>xcopy /Y $(ProjectDir)lib\SDL2\SDL2.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_image\SDL2_image.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_ttf\SDL2_ttf.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android-x86_64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CLanguageStandard>c17</CLanguageStandard>
+      <CppLanguageStandard>cpp17</CppLanguageStandard>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>$(ProjectDir)lib\SDL2\SDL2.lib;$(ProjectDir)lib\SDL2\SDL2main.lib;$(ProjectDir)lib\SDL_image\SDL_image.lib;$(ProjectDir)lib\SDL_ttf\SDL_tff.lib;$(ProjectDir)lib\SDL_mixer\SDL_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(ProjectDir)lib\SDL2;$(ProjectDir)lib\SDL_image;$(ProjectDir)lib\SDL_ttf;$(ProjectDir)lib\SDL_mixer;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CustomBuildStep>
+      <Command>xcopy /Y $(ProjectDir)lib\SDL2\SDL2.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_image\SDL2_image.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_ttf\SDL2_ttf.dll $(TargetDir)
+xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
+    </CustomBuildStep>
+  </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="headers\EventSystem.h" />
     <ClInclude Include="headers\Collision.h" />
@@ -241,6 +351,12 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
     <ClInclude Include="headers\RayCastCallback.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AndroidPackaging\app\src\main\cpp\JniBindings.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="source\EventSystem.cpp" />
     <ClCompile Include="source\RayCastCallback.cpp" />
     <ClCompile Include="source\ContactListener.cpp" />
@@ -342,12 +458,81 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
+    <None Include="AndroidPackaging\app\build.gradle" />
+    <None Include="AndroidPackaging\app\proguard-rules.pro" />
+    <None Include="AndroidPackaging\app\src\androidTest\java\com\example\gameengineYY2D\ExampleInstrumentedTest.java" />
+    <None Include="AndroidPackaging\app\src\main\java\com\example\gameengineYY2D\MainActivity.java" />
+    <None Include="AndroidPackaging\app\src\test\java\com\example\gameengineYY2D\ExampleUnitTest.java" />
+    <None Include="AndroidPackaging\build.gradle" />
+    <None Include="AndroidPackaging\gradle.properties" />
+    <None Include="AndroidPackaging\gradlew" />
+    <None Include="AndroidPackaging\gradlew.bat" />
+    <None Include="AndroidPackaging\gradle\wrapper\gradle-wrapper.jar" />
+    <None Include="AndroidPackaging\gradle\wrapper\gradle-wrapper.properties" />
+    <None Include="AndroidPackaging\settings.gradle" />
     <None Include="makefile" />
     <None Include="resources\actor_templates\friend.template" />
     <None Include="resources\actor_templates\wolverine.template" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="credit.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\drawable\ic_launcher_background.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\drawable-v24\ic_launcher_foreground.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\layout\activity_main.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-anydpi-v26\ic_launcher.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-anydpi-v26\ic_launcher_round.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-hdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-hdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-mdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-mdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xhdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxhdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxxhdpi\ic_launcher.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\mipmap-xxxhdpi\ic_launcher_round.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\values\colors.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\values\strings.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\res\values\styles.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="AndroidPackaging\app\src\main\AndroidManifest.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets" />

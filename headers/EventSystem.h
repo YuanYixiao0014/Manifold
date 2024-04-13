@@ -2,6 +2,7 @@
 
 #include "lua/lua.hpp"
 #include "LuaBridge/LuaBridge.h"
+#include <unordered_map>
 
 struct eventStruct
 {
