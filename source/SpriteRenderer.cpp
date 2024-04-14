@@ -15,12 +15,12 @@ void SpriteRenderer::OnStart()
 
 void SpriteRenderer::OnUpdate()
 {
-	if (!inAnimation) {
-		if (rb != nullptr) {
-			pos = rb->GetPosition();
-			rotation_degrees = rb->GetRotation();
-		}
+	if (rb != nullptr) {
+		pos = rb->GetPosition();
+		rotation_degrees = rb->GetRotation();
+	}
 
+	if (!inAnimation) {
 		Renderer::DrawEx(sprite_name, pos.x, pos.y, rotation_degrees,
 			scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order);
 	}
@@ -36,6 +36,7 @@ void SpriteRenderer::OnUpdate()
 			showPngAnimation(animations_pngs[animationName]);
 		}
 	}
+	if (endAnim) resetAnimation();
 }
 
 void SpriteRenderer::createPngAnimation(std::string animName)
@@ -104,7 +105,7 @@ void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loop
 			{
 				inAnimation = true;
 				animationName = animName;
-				animationType = false;
+				animationType = true;
 				loop = loopAnim;
 				framePrev = Helper::GetFrameNumber();
 				frameCounter = 0;
@@ -116,48 +117,17 @@ void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loop
 void SpriteRenderer::endAnimation(bool pngAnim, std::string animName)
 {
 	if (inAnimation) {
-		if (pngAnim) {
-			auto it = animations_pngs.find(animName);
-			if (it == animations_pngs.end()) {
-				std::cout << "\033[31m" << "animation name : " << animName << " does not exist " << "\033[0m" << std::endl;
-			}
-			else
-			{
-				auto& animation = it->second;
-				auto frame = animation.frames.front();
-				while(animation.frames.front().second >= frame.second){
-					animation.frames.pop();
-					animation.frames.push(frame);
-				}
-				inAnimation = false;
-			}
-		}
-		else
-		{
-			auto it = animations_sheets.find(animName);
-			if (it == animations_sheets.end()) {
-				std::cout << "\033[31m" << "animation name : " << animName << " does not exist " << "\033[0m" << std::endl;
-			}
-			else
-			{
-				auto& animation = it->second;
-				auto frame = animation.frames.front();
-				while (animation.frames.front().endFrame >= frame.endFrame){
-					animation.frames.pop();
-					animation.frames.push(frame);
-					frame = animation.frames.front();
-				}
-				inAnimation = false;
-			}
-		}
+		inAnimation = false;
+		endAnim = true;
 	}
 }
 
 void SpriteRenderer::showPngAnimation(pngAnimation& animation)
 {
+	
 	frameCounter += (Helper::GetFrameNumber() - framePrev);
 	framePrev = Helper::GetFrameNumber();
-	
+
 	auto frame = animation.frames.front();
 	if (frameCounter >= frame.second) {
 		animation.frames.pop();
@@ -169,23 +139,71 @@ void SpriteRenderer::showPngAnimation(pngAnimation& animation)
 	}
 
 	frame = animation.frames.front();
-	
+
 	Renderer::DrawEx(frame.first, pos.x, pos.y, rotation_degrees,
 		scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order);
-
+	
 }
 
 void SpriteRenderer::showSheetAnimation(sheetAnimation& animation)
 {
+	frameCounter += (Helper::GetFrameNumber() - framePrev);
+	framePrev = Helper::GetFrameNumber();
+
+	auto frame = animation.frames.front();
+	if (frameCounter >= frame.endFrame) {
+		animation.frames.pop();
+		animation.frames.push(frame);
+		if (animation.frames.front().endFrame < frame.endFrame) {
+			if (loop) frameCounter = 0;	//play again
+			else inAnimation = false;	//animation Ends
+		}
+	}
+
+	frame = animation.frames.front();
+
+	Renderer::DrawExSheet(animation.sheetName, pos.x, pos.y, rotation_degrees,
+		scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order, frame.clip_inSheet.x, frame.clip_inSheet.y, frame.clip_inSheet.w, frame.clip_inSheet.h);
 
 
+}
 
-
-
-
-
-
-
-
-
+void SpriteRenderer::resetAnimation()
+{
+	if (!animationType) {
+		auto it = animations_pngs.find(animationName);
+		if (it == animations_pngs.end()) {
+			std::cout << "\033[31m" << "animation name : " << animationName << " does not exist " << "\033[0m" << std::endl;
+		}
+		else
+		{
+			auto& animation = it->second;
+			auto frame = animation.frames.front();
+			while (animation.frames.front().second >= frame.second) {
+				frame = animation.frames.front();
+				animation.frames.pop();
+				animation.frames.push(frame);
+			}
+			inAnimation = false;
+		}
+	}
+	else
+	{
+		auto it = animations_sheets.find(animationName);
+		if (it == animations_sheets.end()) {
+			std::cout << "\033[31m" << "Ending animation, animation name : " << animationName << " does not exist " << "\033[0m" << std::endl;
+		}
+		else
+		{
+			auto& animation = it->second;
+			auto frame = animation.frames.front();
+			while (animation.frames.front().endFrame > frame.endFrame) {
+				frame = animation.frames.front();
+				animation.frames.pop();
+				animation.frames.push(frame);
+			}
+			inAnimation = false;
+		}
+	}
+	endAnim = false;
 }

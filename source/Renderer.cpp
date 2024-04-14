@@ -205,6 +205,17 @@ void Renderer::DrawEx(std::string image_name, float x, float y, float rotation_d
 	ImagesToRender.push_back(ImageStruct(image_name, x, y, rotation_degrees, scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order));
 }
 
+void Renderer::DrawSheet(std::string image_name, float x, float y, int clip_x, int clip_y, int clip_w, int clip_h)
+{
+	ImagesToRender.push_back(ImageStruct(image_name, x, y, { clip_x, clip_y, clip_w, clip_h}));
+}
+
+void Renderer::DrawExSheet(std::string image_name, float x, float y, float rotation_degrees, float scale_x, float scale_y, float pivot_x, float pivot_y, float r, float g, float b, float a, float sorting_order, 
+	int clip_x, int clip_y, int clip_w, int clip_h)
+{
+	ImagesToRender.push_back(ImageStruct(image_name, x, y, rotation_degrees, scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order, { clip_x, clip_y, clip_w, clip_h }));
+}
+
 void Renderer::renderImage(ImageStruct& img)
 {
 
@@ -280,7 +291,8 @@ void Renderer::renderImageAG(ImageStruct& img)
 	SDL_Texture* actor_texture = getImage(img.image_name);
 
 	SDL_Rect dstRect;
-	SDL_QueryTexture(actor_texture, NULL, NULL, &dstRect.w, &dstRect.h);
+	if (!img.isSheet) SDL_QueryTexture(actor_texture, NULL, NULL, &dstRect.w, &dstRect.h);
+	else { dstRect.w = img.clip.w; dstRect.h = img.clip.h; }
 
 	//apply scale
 	int flipType = SDL_FLIP_NONE;
@@ -310,7 +322,9 @@ void Renderer::renderImageAG(ImageStruct& img)
 	SDL_SetTextureAlphaMod(actor_texture, img.a);
 
 	//draw
-	Helper::SDL_RenderCopyEx498(0, "", renderer, actor_texture, NULL, &dstRect, img.rotation_degrees, &pivot_point, static_cast<SDL_RendererFlip>(flipType));
+	if (img.isSheet) Helper::SDL_RenderCopyEx498(0, "", renderer, actor_texture, &img.clip, &dstRect, img.rotation_degrees, &pivot_point, static_cast<SDL_RendererFlip>(flipType));
+	else Helper::SDL_RenderCopyEx498(0, "", renderer, actor_texture, NULL, &dstRect, img.rotation_degrees, &pivot_point, static_cast<SDL_RendererFlip>(flipType));
+	
 
 	SDL_SetTextureColorMod(actor_texture, 255, 255, 255);
 	SDL_SetTextureAlphaMod(actor_texture, 255);

@@ -113,6 +113,8 @@ void ComponentDB::initializeFunctions()
             .addFunction("DrawUIEx", &Renderer::DrawUIEx)
             .addFunction("Draw", &Renderer::Draw)
             .addFunction("DrawEx", &Renderer::DrawEx)
+            .addFunction("DrawSheet", &Renderer::DrawSheet)
+            //.addFunction("DrawExSheet", &Renderer::DrawExSheet)
             .addFunction("DrawPixel", &Renderer::DrawPixel)
         .endNamespace();
 

@@ -22,10 +22,16 @@ struct ImageStruct {
 	float scale_x; float scale_y;
 	float pivot_x; float pivot_y;
 	int r; int g; int b; int a; int sorting_order;
+	bool isSheet = false;
+	SDL_Rect clip = { 0, 0, 0, 0 };
 
 	ImageStruct(std::string& image_name, float x, float y) :
 		image_name(image_name), x(x), y(y), rotation_degrees(0.0f), scale_x(1.0f), scale_y(1.0f),
 		pivot_x(0.5f), pivot_y(0.5f), r(255), g(255), b(255), a(255), sorting_order(0) {}
+
+	ImageStruct(std::string& image_name, float x, float y, SDL_Rect clip_inSheet) :
+		image_name(image_name), x(x), y(y), rotation_degrees(0.0f), scale_x(1.0f), scale_y(1.0f),
+		pivot_x(0.5f), pivot_y(0.5f), r(255), g(255), b(255), a(255), sorting_order(0), clip(clip_inSheet), isSheet(true) {}
 
 	ImageStruct(std::string& image_name,
 		float x, float y, float rotation_degrees,
@@ -34,6 +40,15 @@ struct ImageStruct {
 		float r, float g, float b, float a, float sorting_order) :
 		image_name(image_name), x(x), y(y), rotation_degrees(rotation_degrees), scale_x(scale_x), scale_y(scale_y),
 		pivot_x(pivot_x), pivot_y(pivot_y), r(r), g(g), b(b), a(a), sorting_order(sorting_order) {}
+
+	ImageStruct(std::string& image_name,
+		float x, float y, float rotation_degrees,
+		float scale_x, float scale_y,
+		float pivot_x, float pivot_y,
+		float r, float g, float b, float a, float sorting_order,
+		SDL_Rect clip_inSheet) :
+		image_name(image_name), x(x), y(y), rotation_degrees(rotation_degrees), scale_x(scale_x), scale_y(scale_y),
+		pivot_x(pivot_x), pivot_y(pivot_y), r(r), g(g), b(b), a(a), sorting_order(sorting_order), clip(clip_inSheet), isSheet(true) {}
 
 	static bool compareBySortingOrder(const ImageStruct& a, const ImageStruct& b) {
 		return a.sorting_order < b.sorting_order;
@@ -107,6 +122,9 @@ public:
 	static void Draw(std::string image_name, float x, float y);
 	static void DrawEx(std::string image_name, float x, float y, float rotation_degrees, float scale_x, float scale_y,
 		float pivot_x, float pivot_y, float r, float g, float b, float a, float sorting_order);
+	static void DrawSheet(std::string image_name, float x, float y, int clip_x, int clip_y, int clip_w, int clip_h);
+	static void DrawExSheet(std::string image_name, float x, float y, float rotation_degrees, float scale_x, float scale_y,
+		float pivot_x, float pivot_y, float r, float g, float b, float a, float sorting_order, int clip_x, int clip_y, int clip_w, int clip_h);
 	static void renderImage(ImageStruct& img);
 	static void renderImageAG(ImageStruct& img);
 

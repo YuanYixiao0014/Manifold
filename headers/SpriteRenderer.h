@@ -81,9 +81,11 @@ private:
 	int frameCounter = 0;
 	int framePrev = 0;
 	bool loop = false;
+	bool endAnim = false;
 
 	void showPngAnimation(pngAnimation& animation);
 	void showSheetAnimation(sheetAnimation& animation);
+	void resetAnimation();
 
 };
 
