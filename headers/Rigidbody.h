@@ -10,7 +10,7 @@ class Rigidbody
 public:
 	std::string type = "";
 	std::string key = "";
-	Actor* actor;
+	Actor* actor = nullptr;
 	bool enabled = true;
 
 	float x = 0.0f;

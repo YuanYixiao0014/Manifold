@@ -321,6 +321,9 @@
     <ClInclude Include="headers\EventSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="headers\SpriteRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="source\Actor.cpp">
@@ -619,6 +622,9 @@
     </ClCompile>
     <ClCompile Include="AndroidPackaging\app\src\main\cpp\JniBindings.cpp">
       <Filter>AndroidPackaging\app\src\main\cpp</Filter>
+    </ClCompile>
+    <ClCompile Include="source\SpriteRenderer.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

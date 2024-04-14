@@ -349,6 +349,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
     <ClInclude Include="Include\box2d\src\dynamics\b2_polygon_contact.h" />
     <ClInclude Include="headers\PhysicsWorld.h" />
     <ClInclude Include="headers\RayCastCallback.h" />
+    <ClInclude Include="headers\SpriteRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AndroidPackaging\app\src\main\cpp\JniBindings.cpp">
@@ -455,6 +456,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
     <ClCompile Include="source\SceneDB.cpp" />
     <ClCompile Include="source\TemplateDB.cpp" />
     <ClCompile Include="source\TextDB.cpp" />
+    <ClCompile Include="source\SpriteRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

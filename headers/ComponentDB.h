@@ -29,6 +29,7 @@ public:
 
 
 	static Component createRigidbody(std::string& key_in);
+	static Component createSpriteRenderer(std::string& key_in);
 
 private:
 	void initializeState();

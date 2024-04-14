@@ -4,7 +4,7 @@
 
 struct HitResult
 {
-    Actor* actor;
+    Actor* actor = nullptr;
     b2Vec2 point;
     b2Vec2 normal;
     bool is_trigger;

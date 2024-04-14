@@ -15,6 +15,30 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <queue>
 
+struct ImageStruct {
+	std::string image_name;
+	float x; float y;
+	int rotation_degrees;
+	float scale_x; float scale_y;
+	float pivot_x; float pivot_y;
+	int r; int g; int b; int a; int sorting_order;
+
+	ImageStruct(std::string& image_name, float x, float y) :
+		image_name(image_name), x(x), y(y), rotation_degrees(0.0f), scale_x(1.0f), scale_y(1.0f),
+		pivot_x(0.5f), pivot_y(0.5f), r(255), g(255), b(255), a(255), sorting_order(0) {}
+
+	ImageStruct(std::string& image_name,
+		float x, float y, float rotation_degrees,
+		float scale_x, float scale_y,
+		float pivot_x, float pivot_y,
+		float r, float g, float b, float a, float sorting_order) :
+		image_name(image_name), x(x), y(y), rotation_degrees(rotation_degrees), scale_x(scale_x), scale_y(scale_y),
+		pivot_x(pivot_x), pivot_y(pivot_y), r(r), g(g), b(b), a(a), sorting_order(sorting_order) {}
+
+	static bool compareBySortingOrder(const ImageStruct& a, const ImageStruct& b) {
+		return a.sorting_order < b.sorting_order;
+	}
+};
 
 
 class Renderer
@@ -79,36 +103,11 @@ public:
 	static void renderUIImage(UIImageStruct& img);
 
 	//Image related, draw, drawEX
-	struct ImageStruct {
-		std::string image_name;
-		float x; float y;
-		int rotation_degrees;
-		float scale_x; float scale_y;
-		float pivot_x; float pivot_y;
-		int r; int g; int b; int a; int sorting_order;
-
-		ImageStruct(std::string& image_name, float x, float y) :
-			image_name(image_name), x(x), y(y), rotation_degrees(0.0f), scale_x(1.0f), scale_y(1.0f),
-			pivot_x(0.5f), pivot_y(0.5f), r(255), g(255), b(255), a(255), sorting_order(0) {}
-
-		ImageStruct(std::string& image_name,
-			float x, float y, float rotation_degrees, 
-			float scale_x, float scale_y,
-			float pivot_x, float pivot_y,
-			float r, float g, float b, float a, float sorting_order) :
-			image_name(image_name), x(x), y(y), rotation_degrees(rotation_degrees), scale_x(scale_x), scale_y(scale_y),
-			pivot_x(pivot_x), pivot_y(pivot_y), r(r), g(g), b(b), a(a), sorting_order(sorting_order) {}
-
-		static bool compareBySortingOrder(const ImageStruct& a, const ImageStruct& b) {
-			return a.sorting_order < b.sorting_order;
-		}
-	};
 	static inline std::vector<ImageStruct> ImagesToRender;
 	static void Draw(std::string image_name, float x, float y);
 	static void DrawEx(std::string image_name, float x, float y, float rotation_degrees, float scale_x, float scale_y,
 		float pivot_x, float pivot_y, float r, float g, float b, float a, float sorting_order);
 	static void renderImage(ImageStruct& img);
-
 	static void renderImageAG(ImageStruct& img);
 
 	static SDL_Texture* getImage(std::string& image_name);

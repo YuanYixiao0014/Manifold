@@ -8,6 +8,7 @@
 #include "Collision.h"
 #include "RayCastCallback.h"
 #include "EventSystem.h"
+#include "SpriteRenderer.h"
 
 void ComponentDB::initialize()
 {
@@ -183,6 +184,37 @@ void ComponentDB::initializeFunctions()
         .endClass();
 
     luabridge::getGlobalNamespace(lua_state)
+        .beginClass<SpriteRenderer>("SpriteRenderer")
+            .addData("type", &SpriteRenderer::type)
+            .addData("key", &SpriteRenderer::key)
+            .addData("actor", &SpriteRenderer::actor)
+            .addData("enabled", &SpriteRenderer::enabled)
+            .addData("sprite", &SpriteRenderer::sprite_name)
+            .addData("position", &SpriteRenderer::pos)
+            .addData("r", &SpriteRenderer::r)
+            .addData("g", &SpriteRenderer::g)
+            .addData("b", &SpriteRenderer::b)
+            .addData("a", &SpriteRenderer::a)
+            .addData("sorting_order", &SpriteRenderer::sorting_order)
+            .addData("scale_x", &SpriteRenderer::scale_x)
+            .addData("scale_y", &SpriteRenderer::scale_y)
+            .addData("pivot_x", &SpriteRenderer::pivot_x)
+            .addData("pivot_y", &SpriteRenderer::pivot_y)
+            .addData("rotation_degrees", &SpriteRenderer::rotation_degrees)
+            .addFunction("setColor", &SpriteRenderer::setColor)
+            .addFunction("OnStart", &SpriteRenderer::OnStart)
+            .addFunction("OnUpdate", &SpriteRenderer::OnUpdate)
+            //animation related
+            .addFunction("createPngAnimation", &SpriteRenderer::createPngAnimation)
+            .addFunction("addPngAnimationFrame", &SpriteRenderer::addPngAnimationFrame)
+            .addFunction("createSheetAnimation", &SpriteRenderer::createSheetAnimation)
+            .addFunction("addSheetAnimationFrame", &SpriteRenderer::addSheetAnimationFrame)
+            .addFunction("playAnimation", &SpriteRenderer::playAnimation)
+            .addFunction("endAnimation", &SpriteRenderer::endAnimation)
+        .endClass();
+
+
+    luabridge::getGlobalNamespace(lua_state)
         .beginClass<b2Vec2>("Vector2")
             .addConstructor<void(*) (float, float)>()
             .addProperty("x", &b2Vec2::x)
@@ -241,6 +273,19 @@ Component ComponentDB::createRigidbody(std::string& key_in)
     return component;
 }
 
+Component ComponentDB::createSpriteRenderer(std::string& key_in)
+{
+    Component component;
+    SpriteRenderer* spriteRenderer = new SpriteRenderer;
+    spriteRenderer->key = key_in;
+    luabridge::LuaRef componentRef(lua_state, spriteRenderer);
+    component.ComponentPtr = std::make_shared<luabridge::LuaRef>(componentRef);
+
+    component.type = "SpriteRenderer";
+
+    return component;
+}
+
 void ComponentDB::initializeComponents(std::string& luafile)
 {
         if (component_tables.find(luafile) != component_tables.end()) {
@@ -254,6 +299,14 @@ void ComponentDB::initializeComponents(std::string& luafile)
             component_tables.insert({ luafile, new_component });
             return;
         }
+        if (luafile == "SpriteRenderer") {
+            std::string default_key = "";
+            Component new_component = createSpriteRenderer(default_key);
+
+            component_tables.insert({ luafile, new_component });
+            return;
+        }
+
 
         //lua files name
         std::string path = "resources/component_types/" + luafile + ".lua";

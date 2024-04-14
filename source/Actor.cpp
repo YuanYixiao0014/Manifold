@@ -161,7 +161,18 @@ luabridge::LuaRef Actor::AddComponent(std::string type)
 		InjectConvenienceReferences(new_component.ComponentPtr, type);
 		return *new_component.ComponentPtr;
 
-	}else{
+	}
+	else if (type == "SpriteRenderer") {
+		std::string key = "r" + std::to_string(ComponentDB::runtime_components_counter);
+		ComponentDB::runtime_components_counter++;
+
+		Component new_component = ComponentDB::createSpriteRenderer(key);
+
+		this->components_ToAdd[key] = { new_component.ComponentPtr , type };
+		InjectConvenienceReferences(new_component.ComponentPtr, type);
+		return *new_component.ComponentPtr;
+	}
+	else{
 		luabridge::LuaRef new_table = luabridge::newTable(ComponentDB::lua_state);
 		ComponentDB::SetActorComponent(new_table, type);
 		std::string key = "r" + std::to_string(ComponentDB::runtime_components_counter);
@@ -230,6 +241,9 @@ void Actor::overrideComponent(std::string& key, const rapidjson::Value& inner_co
 
 			if (type == "Rigidbody") {
 				component_new = ComponentDB::createRigidbody(key);
+			}
+			else if(type == "SpriteRenderer") {
+				component_new = ComponentDB::createSpriteRenderer(key);
 			}
 			else
 			{
