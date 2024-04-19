@@ -92,6 +92,13 @@ void Renderer::renderFrame()
 		renderImageAG(ImageInScreen[i]);
 	}
 
+	//render spine animations
+	for (spine::SkeletonDrawable* drawable : skelDrawables) {
+		drawable->draw(renderer);
+	}
+
+
+
 	//reset the scale
 	SDL_RenderSetScale(renderer, 1, 1);
 
@@ -345,6 +352,11 @@ SDL_Texture* Renderer::getImage(std::string& image_name)
 		std::cout << "missing image: " << image_name << std::endl;
 	}
 	return texture;
+}
+
+void Renderer::skelDraw(spine::SkeletonDrawable* drawable)
+{
+	skelDrawables.push_back(drawable);
 }
 
 void Renderer::DrawPixel(float x, float y, float r, float g, float b, float a)

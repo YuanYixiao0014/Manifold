@@ -28,8 +28,8 @@ bool Resources_check::is_config_file(const std::string& path)
 bool Resources_check::checkFileType(const std::string& path, std::string& type)
 {
     std::filesystem::path fspath = path;
-    bool is_scene = fspath.extension() == type;
-    if (!(std::filesystem::exists(path) && is_scene)) {
+    bool is_type = fspath.extension() == type;
+    if (!(std::filesystem::exists(path) && is_type)) {
         //directory path not exists
         return false;
     }

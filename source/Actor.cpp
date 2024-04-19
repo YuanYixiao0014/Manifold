@@ -172,6 +172,16 @@ luabridge::LuaRef Actor::AddComponent(std::string type)
 		InjectConvenienceReferences(new_component.ComponentPtr, type);
 		return *new_component.ComponentPtr;
 	}
+	else if (type == "SpineAnimation") {
+		std::string key = "r" + std::to_string(ComponentDB::runtime_components_counter);
+		ComponentDB::runtime_components_counter++;
+
+		Component new_component = ComponentDB::createSpineAnimation(key);
+
+		this->components_ToAdd[key] = { new_component.ComponentPtr , type };
+		InjectConvenienceReferences(new_component.ComponentPtr, type);
+		return *new_component.ComponentPtr;
+	}
 	else{
 		luabridge::LuaRef new_table = luabridge::newTable(ComponentDB::lua_state);
 		ComponentDB::SetActorComponent(new_table, type);
@@ -245,6 +255,9 @@ void Actor::overrideComponent(std::string& key, const rapidjson::Value& inner_co
 			else if(type == "SpriteRenderer") {
 				component_new = ComponentDB::createSpriteRenderer(key);
 			}
+			else if (type == "SpineAnimation") {
+				component_new = ComponentDB::createSpineAnimation(key);
+			}
 			else
 			{
 				luabridge::LuaRef new_table = luabridge::newTable(ComponentDB::lua_state);
@@ -263,7 +276,7 @@ void Actor::overrideComponent(std::string& key, const rapidjson::Value& inner_co
 			this->components.insert({ key, {component_new, type} });
 			this->components_byType[type].push_back(key);
 
-		}else{//components[key].second != "Rigidbody") {
+		}else{
 			std::string name = innerItr->name.GetString();
 
 			if (innerItr->value.IsString()) {
@@ -297,10 +310,6 @@ void Actor::overrideComponent(std::string& key, const rapidjson::Value& inner_co
 			}
 
 		}
-
-
-
-
 
 	}
 

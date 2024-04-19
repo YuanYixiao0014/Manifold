@@ -73,7 +73,7 @@ public:
 	void addSheetAnimationFrame(std::string animName, int x, int y, int w, int h, int endFrame);
 
 	void playAnimation(bool pngAnim, std::string animName, bool loopAnim);
-	void endAnimation(bool pngAnim, std::string animName);
+	void endAnimation(std::string animName);
 
 private:
 	std::unordered_map<std::string, pngAnimation> animations_pngs;		//animation based on different pngs 
@@ -82,10 +82,12 @@ private:
 	int framePrev = 0;
 	bool loop = false;
 	bool endAnim = false;
+	sheetAnimation playingSheetAnim;
+	pngAnimation playingPngAnim;
+
 
 	void showPngAnimation(pngAnimation& animation);
 	void showSheetAnimation(sheetAnimation& animation);
-	void resetAnimation();
 
 };
 

@@ -9,6 +9,7 @@
 #include "RayCastCallback.h"
 #include "EventSystem.h"
 #include "SpriteRenderer.h"
+#include "SpineAnimation.h"
 
 void ComponentDB::initialize()
 {
@@ -259,6 +260,21 @@ void ComponentDB::initializeFunctions()
             .addFunction("Publish", &EventSystem::Publish)
         .endNamespace();
 
+    luabridge::getGlobalNamespace(lua_state)
+        .beginClass<SpineAnimation>("SpineAnimation")
+            .addData("type", &SpineAnimation::type)
+            .addData("key", &SpineAnimation::key)
+            .addData("actor", &SpineAnimation::actor)
+            .addData("enabled", &SpineAnimation::enabled)
+            .addData("position", &SpineAnimation::position)
+            .addFunction("loadSpineAnim", &SpineAnimation::loadSpineAnim)
+            .addFunction("playSpineAnim", &SpineAnimation::playSpineAnim)
+            .addFunction("endSpineAnim", &SpineAnimation::endSpineAnim)
+            .addFunction("setPosition", &SpineAnimation::setPosition)
+            .addFunction("OnUpdate", &SpineAnimation::OnUpdate)
+            .addFunction("OnStart", &SpineAnimation::OnStart)
+        .endClass();
+
 }
 
 Component ComponentDB::createRigidbody(std::string& key_in)
@@ -288,6 +304,19 @@ Component ComponentDB::createSpriteRenderer(std::string& key_in)
     return component;
 }
 
+Component ComponentDB::createSpineAnimation(std::string& key_in)
+{
+    Component component;
+    SpineAnimation* spineAnimation = new SpineAnimation;
+    spineAnimation->key = key_in;
+    luabridge::LuaRef componentRef(lua_state, spineAnimation);
+    component.ComponentPtr = std::make_shared<luabridge::LuaRef>(componentRef);
+
+    component.type = "SpineAnimation";
+
+    return component;
+}
+
 void ComponentDB::initializeComponents(std::string& luafile)
 {
         if (component_tables.find(luafile) != component_tables.end()) {
@@ -308,7 +337,13 @@ void ComponentDB::initializeComponents(std::string& luafile)
             component_tables.insert({ luafile, new_component });
             return;
         }
+        if (luafile == "SpineAnimation") {
+            std::string default_key = "";
+            Component new_component = createSpineAnimation(default_key);
 
+            component_tables.insert({ luafile, new_component });
+            return;
+        }
 
         //lua files name
         std::string path = "resources/component_types/" + luafile + ".lua";
@@ -335,9 +370,6 @@ void ComponentDB::initializeComponents(std::string& luafile)
         }
 
 }
-
-
-
 
 void ComponentDB::EstablishInheritance(luabridge::LuaRef& instance_table, luabridge::LuaRef& parent_table)
 {

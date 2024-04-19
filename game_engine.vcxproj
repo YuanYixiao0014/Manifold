@@ -189,7 +189,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\spine;$(ProjectDir)\Include\spine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <AdditionalOptions>/wd4996
  %(AdditionalOptions)</AdditionalOptions>
       <Optimization>MaxSpeed</Optimization>
@@ -220,7 +220,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\spine;$(ProjectDir)\Include\spine\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AdditionalOptions>/wd4996
  %(AdditionalOptions)</AdditionalOptions>
@@ -246,7 +246,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android-x86_64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\spine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>c17</CLanguageStandard>
       <CppLanguageStandard>cpp17</CppLanguageStandard>
     </ClCompile>
@@ -263,7 +263,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Android-x86_64'">
     <ClCompile>
-      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir)\Include\glm;$(ProjectDir)\Include;$(ProjectDir)\Include\rapidjson;$(ProjectDir)\headers;$(ProjectDir)\Include\SDL2;$(ProjectDir)\Include\SDL_image;$(ProjectDir)\Include\SDL_ttf;$(ProjectDir)\Include\SDL_mixer;$(ProjectDir)\Include\box2d\src;$(ProjectDir)\Include\box2d\include;$(ProjectDir)\Include\box2d\include\box2d;$(ProjectDir)\Include\spine;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CLanguageStandard>c17</CLanguageStandard>
       <CppLanguageStandard>cpp17</CppLanguageStandard>
     </ClCompile>
@@ -350,6 +350,9 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
     <ClInclude Include="headers\PhysicsWorld.h" />
     <ClInclude Include="headers\RayCastCallback.h" />
     <ClInclude Include="headers\SpriteRenderer.h" />
+    <ClInclude Include="Include\spine\spine-sdl-cpp.h" />
+    <ClInclude Include="Include\spine\stb_image.h" />
+    <ClInclude Include="headers\SpineAnimation.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AndroidPackaging\app\src\main\cpp\JniBindings.cpp">
@@ -358,6 +361,69 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Include\spine\spine-sdl-cpp.cpp" />
+    <ClCompile Include="Include\spine\spine\Animation.cpp" />
+    <ClCompile Include="Include\spine\spine\AnimationState.cpp" />
+    <ClCompile Include="Include\spine\spine\AnimationStateData.cpp" />
+    <ClCompile Include="Include\spine\spine\Atlas.cpp" />
+    <ClCompile Include="Include\spine\spine\AtlasAttachmentLoader.cpp" />
+    <ClCompile Include="Include\spine\spine\Attachment.cpp" />
+    <ClCompile Include="Include\spine\spine\AttachmentLoader.cpp" />
+    <ClCompile Include="Include\spine\spine\AttachmentTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Bone.cpp" />
+    <ClCompile Include="Include\spine\spine\BoneData.cpp" />
+    <ClCompile Include="Include\spine\spine\BoundingBoxAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\ClippingAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\ColorTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\ConstraintData.cpp" />
+    <ClCompile Include="Include\spine\spine\CurveTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\DeformTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\DrawOrderTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Event.cpp" />
+    <ClCompile Include="Include\spine\spine\EventData.cpp" />
+    <ClCompile Include="Include\spine\spine\EventTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Extension.cpp" />
+    <ClCompile Include="Include\spine\spine\IkConstraint.cpp" />
+    <ClCompile Include="Include\spine\spine\IkConstraintData.cpp" />
+    <ClCompile Include="Include\spine\spine\IkConstraintTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Json.cpp" />
+    <ClCompile Include="Include\spine\spine\LinkedMesh.cpp" />
+    <ClCompile Include="Include\spine\spine\Log.cpp" />
+    <ClCompile Include="Include\spine\spine\MathUtil.cpp" />
+    <ClCompile Include="Include\spine\spine\MeshAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\PathAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\PathConstraint.cpp" />
+    <ClCompile Include="Include\spine\spine\PathConstraintData.cpp" />
+    <ClCompile Include="Include\spine\spine\PathConstraintMixTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\PathConstraintPositionTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\PathConstraintSpacingTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\PointAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\RegionAttachment.cpp" />
+    <ClCompile Include="Include\spine\spine\RotateTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\RTTI.cpp" />
+    <ClCompile Include="Include\spine\spine\ScaleTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Sequence.cpp" />
+    <ClCompile Include="Include\spine\spine\SequenceTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\ShearTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Skeleton.cpp" />
+    <ClCompile Include="Include\spine\spine\SkeletonBinary.cpp" />
+    <ClCompile Include="Include\spine\spine\SkeletonBounds.cpp" />
+    <ClCompile Include="Include\spine\spine\SkeletonClipping.cpp" />
+    <ClCompile Include="Include\spine\spine\SkeletonData.cpp" />
+    <ClCompile Include="Include\spine\spine\SkeletonJson.cpp" />
+    <ClCompile Include="Include\spine\spine\Skin.cpp" />
+    <ClCompile Include="Include\spine\spine\Slot.cpp" />
+    <ClCompile Include="Include\spine\spine\SlotData.cpp" />
+    <ClCompile Include="Include\spine\spine\SpineObject.cpp" />
+    <ClCompile Include="Include\spine\spine\TextureLoader.cpp" />
+    <ClCompile Include="Include\spine\spine\Timeline.cpp" />
+    <ClCompile Include="Include\spine\spine\TransformConstraint.cpp" />
+    <ClCompile Include="Include\spine\spine\TransformConstraintData.cpp" />
+    <ClCompile Include="Include\spine\spine\TransformConstraintTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\TranslateTimeline.cpp" />
+    <ClCompile Include="Include\spine\spine\Triangulator.cpp" />
+    <ClCompile Include="Include\spine\spine\Updatable.cpp" />
+    <ClCompile Include="Include\spine\spine\VertexAttachment.cpp" />
     <ClCompile Include="source\EventSystem.cpp" />
     <ClCompile Include="source\RayCastCallback.cpp" />
     <ClCompile Include="source\ContactListener.cpp" />
@@ -457,6 +523,7 @@ xcopy /Y $(ProjectDir)lib\SDL_mixer\SDL2_mixer.dll $(TargetDir)</Command>
     <ClCompile Include="source\TemplateDB.cpp" />
     <ClCompile Include="source\TextDB.cpp" />
     <ClCompile Include="source\SpriteRenderer.cpp" />
+    <ClCompile Include="source\SpineAnimation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />

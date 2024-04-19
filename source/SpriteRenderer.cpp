@@ -29,14 +29,13 @@ void SpriteRenderer::OnUpdate()
 		//update and show animation
 		if (animationType) {
 			//sheet animation
-			showSheetAnimation(animations_sheets[animationName]);
+			showSheetAnimation(playingSheetAnim);
 		}
 		else
 		{
-			showPngAnimation(animations_pngs[animationName]);
+			showPngAnimation(playingPngAnim);
 		}
 	}
-	if (endAnim) resetAnimation();
 }
 
 void SpriteRenderer::createPngAnimation(std::string animName)
@@ -78,7 +77,7 @@ void SpriteRenderer::addSheetAnimationFrame(std::string animName, int x, int y, 
 
 void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loopAnim)
 {
-	if (!inAnimation) {
+	
 		if (pngAnim) {
 			auto it = animations_pngs.find(animName);
 			if (it == animations_pngs.end()) {
@@ -89,6 +88,7 @@ void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loop
 				inAnimation = true;
 				animationName = animName;
 				animationType = false;
+				playingPngAnim = it->second;
 				loop = loopAnim;
 				framePrev = Helper::GetFrameNumber();
 				frameCounter = 0;
@@ -106,19 +106,19 @@ void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loop
 				inAnimation = true;
 				animationName = animName;
 				animationType = true;
+				playingSheetAnim = it->second;
 				loop = loopAnim;
 				framePrev = Helper::GetFrameNumber();
 				frameCounter = 0;
 			}
 		}
-	}
+	
 }
 
-void SpriteRenderer::endAnimation(bool pngAnim, std::string animName)
+void SpriteRenderer::endAnimation(std::string animName)
 {
-	if (inAnimation) {
+	if (animationName == animName) {
 		inAnimation = false;
-		endAnim = true;
 	}
 }
 
@@ -166,44 +166,4 @@ void SpriteRenderer::showSheetAnimation(sheetAnimation& animation)
 		scale_x, scale_y, pivot_x, pivot_y, r, g, b, a, sorting_order, frame.clip_inSheet.x, frame.clip_inSheet.y, frame.clip_inSheet.w, frame.clip_inSheet.h);
 
 
-}
-
-void SpriteRenderer::resetAnimation()
-{
-	if (!animationType) {
-		auto it = animations_pngs.find(animationName);
-		if (it == animations_pngs.end()) {
-			std::cout << "\033[31m" << "animation name : " << animationName << " does not exist " << "\033[0m" << std::endl;
-		}
-		else
-		{
-			auto& animation = it->second;
-			auto frame = animation.frames.front();
-			while (animation.frames.front().second >= frame.second) {
-				frame = animation.frames.front();
-				animation.frames.pop();
-				animation.frames.push(frame);
-			}
-			inAnimation = false;
-		}
-	}
-	else
-	{
-		auto it = animations_sheets.find(animationName);
-		if (it == animations_sheets.end()) {
-			std::cout << "\033[31m" << "Ending animation, animation name : " << animationName << " does not exist " << "\033[0m" << std::endl;
-		}
-		else
-		{
-			auto& animation = it->second;
-			auto frame = animation.frames.front();
-			while (animation.frames.front().endFrame > frame.endFrame) {
-				frame = animation.frames.front();
-				animation.frames.pop();
-				animation.frames.push(frame);
-			}
-			inAnimation = false;
-		}
-	}
-	endAnim = false;
 }

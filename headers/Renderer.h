@@ -14,6 +14,7 @@
 #include <optional>
 #include <glm/gtc/matrix_transform.hpp>
 #include <queue>
+#include "SpineAnimation.h"
 
 struct ImageStruct {
 	std::string image_name;
@@ -129,6 +130,10 @@ public:
 	static void renderImageAG(ImageStruct& img);
 
 	static SDL_Texture* getImage(std::string& image_name);
+
+	//spine animations to draw
+	static inline std::vector<spine::SkeletonDrawable*> skelDrawables;
+	static void skelDraw(spine::SkeletonDrawable* drawable);
 
 	//draw pixel:
 	struct PixelStruct{
