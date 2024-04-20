@@ -20,8 +20,7 @@ void SpineAnimation::loadSpineAnim(float scale, std::string atlasName, std::stri
 			drawable->skeleton->setPosition(position.x, position.y);
 			drawable->skeleton->setToSetupPose();
 			drawable->update(0);
-			drawable->animationState->setAnimation(0, "portal", true);
-			drawable->animationState->addAnimation(0, "run", true, 0);
+
 			enabled = true;
 		}
 		else
@@ -38,14 +37,14 @@ void SpineAnimation::loadSpineAnim(float scale, std::string atlasName, std::stri
 	
 }
 
-void SpineAnimation::playSpineAnim()
+void SpineAnimation::playSpineAnim(int channel, std::string animName, bool loop)
 {
-	playingSkelAnim = true;
+	drawable->animationState->setAnimation(channel, animName.c_str(), loop);
 }
 
-void SpineAnimation::endSpineAnim()
+void SpineAnimation::queueSpineAnim(int channel, std::string animName, bool loop, float delay)
 {
-	playingSkelAnim = false;
+	drawable->animationState->addAnimation(channel, animName.c_str(), loop, delay);
 }
 
 void SpineAnimation::OnStart()
@@ -59,7 +58,7 @@ void SpineAnimation::OnUpdate()
 		position = rb->GetPosition();
 		drawable->skeleton->setPosition(position.x, position.y);
 	}
-	if (playingSkelAnim && enabled) {
+	if (enabled) {
 		uint64_t now = SDL_GetPerformanceCounter();
 		double deltaTime = (now - lastFrameTime) / (double)SDL_GetPerformanceFrequency();
 		lastFrameTime = now;
@@ -74,4 +73,15 @@ void SpineAnimation::setPosition(float x_in, float y_in)
 {
 	position = b2Vec2(x_in, y_in);
 	if(drawable != nullptr) drawable->skeleton->setPosition(x_in, y_in);
+}
+
+b2Vec2 SpineAnimation::getRenderScale()
+{
+	return b2Vec2(drawable->skeleton->getScaleX(), -1 * drawable->skeleton->getScaleY());
+}
+
+void SpineAnimation::setRenderScale(b2Vec2 scale_in)
+{
+	drawable->skeleton->setScaleX(scale_in.x); 
+	drawable->skeleton->setScaleY(scale_in.y);
 }

@@ -16,14 +16,14 @@ public:
 
 	Rigidbody* rb = nullptr;
 
-	bool playingSkelAnim = true;
-
-	void loadSpineAnim(float scale, std::string atlasName, std::string jsonName);
-	void playSpineAnim();
-	void endSpineAnim();
+	void loadSpineAnim(float scale_in, std::string atlasName, std::string jsonName);
+	void playSpineAnim(int channel, std::string animName, bool loop);
+	void queueSpineAnim(int channel, std::string animName, bool loop, float delay);
 	void OnStart();
 	void OnUpdate();
 	void setPosition(float x_in, float y_in);
+	b2Vec2 getRenderScale();
+	void setRenderScale(b2Vec2 scale_in);
 	 
 private:
 	uint64_t lastFrameTime = SDL_GetPerformanceCounter();
