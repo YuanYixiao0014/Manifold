@@ -52,7 +52,8 @@ struct ImageStruct {
 		pivot_x(pivot_x), pivot_y(pivot_y), r(r), g(g), b(b), a(a), sorting_order(sorting_order), clip(clip_inSheet), isSheet(true) {}
 
 	static bool compareBySortingOrder(const ImageStruct& a, const ImageStruct& b) {
-		return a.sorting_order < b.sorting_order;
+		if (a.sorting_order == b.sorting_order) return a.y < b.y;
+		else return a.sorting_order < b.sorting_order;
 	}
 };
 

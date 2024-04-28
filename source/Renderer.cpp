@@ -84,7 +84,7 @@ void Renderer::renderFrame()
 	SDL_RenderClear(renderer);
 
 	//render scene space images
-	//std::stable_sort(ImagesToRender.begin(), ImagesToRender.end(), ImageStruct::compareBySortingOrder);
+	std::stable_sort(ImagesToRender.begin(), ImagesToRender.end(), ImageStruct::compareBySortingOrder);
 	//set scale
 	SDL_RenderSetScale(renderer, zoom_factor, zoom_factor);
 	get_Images_InScreen();
