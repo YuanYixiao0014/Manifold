@@ -38,6 +38,27 @@ void SpriteRenderer::OnUpdate()
 	}
 }
 
+void SpriteRenderer::setSprite(std::string new_sprite_name)
+{
+	sprite_name = new_sprite_name;
+}
+
+void SpriteRenderer::setPosition(b2Vec2 new_pos)
+{
+	pos = new_pos;
+}
+
+void SpriteRenderer::setScale(b2Vec2 new_scale)
+{
+	scale_x = new_scale.x;
+	scale_y = new_scale.y;
+}
+
+b2Vec2 SpriteRenderer::getScale()
+{
+	return b2Vec2(scale_x, scale_y);
+}
+
 void SpriteRenderer::createPngAnimation(std::string animName)
 {
 	animations_pngs.insert({ animName, pngAnimation() });
@@ -115,6 +136,18 @@ void SpriteRenderer::playAnimation(bool pngAnim, std::string animName, bool loop
 	
 }
 
+void SpriteRenderer::queueAnimation(bool pngAnim, std::string animName, bool loopAnim)
+{
+	auto it = animations_sheets.find(animName);
+	if (it == animations_sheets.end()) {
+		std::cout << "\033[31m" << "animation name : " << animName << " does not exist " << "\033[0m" << std::endl;
+	}
+	else
+	{
+		animationQueue.emplace(AnimationQ(pngAnim, animName, loopAnim));
+	}
+}
+
 void SpriteRenderer::endAnimation(std::string animName)
 {
 	if (animationName == animName) {
@@ -134,6 +167,10 @@ void SpriteRenderer::showPngAnimation(pngAnimation& animation)
 		animation.frames.push(frame);
 		if (animation.frames.front().second < frame.second) {
 			if (loop) frameCounter = 0;	//play again
+			else if (!animationQueue.empty()) {
+				playAnimation(animationQueue.front().pngAnim, animationQueue.front().animName, animationQueue.front().loopAnim);
+				animationQueue.pop();
+			}
 			else inAnimation = false;	//animation Ends
 		}
 	}
@@ -156,6 +193,10 @@ void SpriteRenderer::showSheetAnimation(sheetAnimation& animation)
 		animation.frames.push(frame);
 		if (animation.frames.front().endFrame < frame.endFrame) {
 			if (loop) frameCounter = 0;	//play again
+			else if (!animationQueue.empty()) {
+				playAnimation(animationQueue.front().pngAnim, animationQueue.front().animName, animationQueue.front().loopAnim);
+				animationQueue.pop();
+			}
 			else inAnimation = false;	//animation Ends
 		}
 	}

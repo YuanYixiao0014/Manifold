@@ -207,12 +207,17 @@ void ComponentDB::initializeFunctions()
             .addFunction("setColor", &SpriteRenderer::setColor)
             .addFunction("OnStart", &SpriteRenderer::OnStart)
             .addFunction("OnUpdate", &SpriteRenderer::OnUpdate)
+            .addFunction("setSprite", &SpriteRenderer::setSprite)
+            .addFunction("setPosition", &SpriteRenderer::setPosition)
+            .addFunction("setScale", &SpriteRenderer::setScale)
+            .addFunction("getScale", &SpriteRenderer::getScale)
             //animation related
             .addFunction("createPngAnimation", &SpriteRenderer::createPngAnimation)
             .addFunction("addPngAnimationFrame", &SpriteRenderer::addPngAnimationFrame)
             .addFunction("createSheetAnimation", &SpriteRenderer::createSheetAnimation)
             .addFunction("addSheetAnimationFrame", &SpriteRenderer::addSheetAnimationFrame)
             .addFunction("playAnimation", &SpriteRenderer::playAnimation)
+            .addFunction("queueAnimation", &SpriteRenderer::queueAnimation)
             .addFunction("endAnimation", &SpriteRenderer::endAnimation)
         .endClass();
 

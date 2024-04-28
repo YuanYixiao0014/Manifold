@@ -72,4 +72,6 @@ private:
 	void create_collider();
 	void create_trigger();
 
+	b2Vec2 velocity = b2Vec2(0.0f, 0.0f);
+	float angularVelocity = 0.0f;
 };

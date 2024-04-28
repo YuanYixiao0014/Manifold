@@ -29,6 +29,15 @@ struct sheetAnimation {
 	sheetAnimation(const std::string sheetName) : sheetName(sheetName){}
 };
 
+struct AnimationQ
+{
+	bool pngAnim;
+	std::string animName;
+	bool loopAnim;
+
+	AnimationQ(bool pngAnim, std::string animName, bool loopAnim) : pngAnim(pngAnim), animName(animName), loopAnim(loopAnim){}
+};
+
 class SpriteRenderer
 {
 public:
@@ -66,6 +75,10 @@ public:
 	void OnStart();
 	void OnUpdate();
 
+	void setSprite(std::string new_sprite_name);
+	void setPosition(b2Vec2 new_pos);
+	void setScale(b2Vec2 new_scale);
+	b2Vec2 getScale();
 
 	void createPngAnimation(std::string animName);
 	void addPngAnimationFrame(std::string animName, std::string frameName, int endFrame);
@@ -73,11 +86,14 @@ public:
 	void addSheetAnimationFrame(std::string animName, int x, int y, int w, int h, int endFrame);
 
 	void playAnimation(bool pngAnim, std::string animName, bool loopAnim);
+	void queueAnimation(bool pngAnim, std::string animName, bool loopAnim);
 	void endAnimation(std::string animName);
 
 private:
 	std::unordered_map<std::string, pngAnimation> animations_pngs;		//animation based on different pngs 
 	std::unordered_map<std::string, sheetAnimation> animations_sheets;	// animation based on sprite sheet
+	std::queue<AnimationQ> animationQueue;
+
 	int frameCounter = 0;
 	int framePrev = 0;
 	bool loop = false;

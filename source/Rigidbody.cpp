@@ -78,6 +78,11 @@ void Rigidbody::OnStart()
 
     create_fixture();
 
+    if (velocity != b2Vec2(0.0f, 0.0f)) SetVelocity(velocity);
+    SetRotation(rotation);
+    SetAngularVelocity(angularVelocity);
+    SetGravityScale(gravity_scale);
+
 }
 
 void Rigidbody::OnUpdate()
@@ -100,7 +105,12 @@ void Rigidbody::AddForce(b2Vec2 vec2)
 
 void Rigidbody::SetVelocity(b2Vec2 vec2)
 {
-    body->SetLinearVelocity(vec2);
+    if (body != nullptr) {
+        body->SetLinearVelocity(vec2);
+    }
+    else {
+        velocity = vec2;
+    }
 }
 
 void Rigidbody::SetPosition(b2Vec2 vec2)
@@ -119,25 +129,49 @@ void Rigidbody::SetPosition(b2Vec2 vec2)
 
 void Rigidbody::SetRotation(float degrees_clockwise)
 {
-    body->SetTransform(body->GetPosition(), degrees_clockwise * (b2_pi / 180.0f));
+    if (body == nullptr) {
+        rotation = degrees_clockwise;
+    }
+    else
+    {
+        body->SetTransform(body->GetPosition(), degrees_clockwise * (b2_pi / 180.0f));
+    }
 }
 
 void Rigidbody::SetAngularVelocity(float degrees_clockwise)
 {
-    body->SetAngularVelocity(degrees_clockwise * (b2_pi / 180.0f));
+    if (body == nullptr) {
+       angularVelocity  = degrees_clockwise;
+    }
+    else
+    {
+        body->SetAngularVelocity(degrees_clockwise * (b2_pi / 180.0f));
+    }
 }
 
-void Rigidbody::SetGravityScale(float gravityScale)
+void Rigidbody::SetGravityScale(float new_gravityScale)
 {
-    body->SetGravityScale(gravityScale);
+    if (body == nullptr) {
+        gravity_scale = new_gravityScale;
+    }
+    else
+    {
+        body->SetGravityScale(new_gravityScale);
+    }
 }
 
 void Rigidbody::SetUpDirection(b2Vec2 vec2)
 {
-    vec2.Normalize();
-    float angle = std::atan2(vec2.x, -vec2.y);
 
-    body->SetTransform(body->GetPosition(), angle);
+    if (body == nullptr) {
+       
+    }
+    else
+    {
+        vec2.Normalize();
+        float angle = std::atan2(vec2.x, -vec2.y);
+        body->SetTransform(body->GetPosition(), angle);
+    }
 
 }
 
