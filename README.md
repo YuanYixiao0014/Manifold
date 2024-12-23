@@ -14,4 +14,4 @@ Support Lua scripts.
 
 Has built-in sprite animation and spineAnimation with support of spine-sdl-runtime.
 
-still developing
+API: https://eecs498-game-engine.github.io/
